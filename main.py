@@ -1,3 +1,4 @@
+import os
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -46,7 +47,7 @@ axes[2].set_title("YZ Plane")
 rect_yz = Rectangle((y_c - y_w / 2, z_c - z_w / 2), y_w, z_w,
                    facecolor='none', edgecolor='g', linewidth=2)
 axes[2].add_patch(rect_yz)
-plt.show()
+plt.savefig("figures/example_data.png")
 
 
 # Split dataset into training (80%), validation (10%), and test (10%)
@@ -71,7 +72,10 @@ optimizer = optim.Adam(model.parameters(), lr=0.001)
 # Add variables to track best model
 best_val_loss = float('inf')
 best_epoch = 0
-model_save_path = f"saved_models\\best_blob_model_{SNR_DB}_snr.pth"
+
+if not os.path.exists("saved_models"):
+    os.makedirs("saved_models")
+model_save_path = f"saved_models/best_blob_model_{SNR_DB}_snr.pth"
 
 # Training loop
 num_epochs = 50
@@ -209,7 +213,7 @@ def plot_comparison(blob_data, ground_truth, prediction_label=None):
 
     # Adjust layout and display
     plt.tight_layout()
-    plt.show()
+    plt.savefig("figures/predict_box.png")
 
 
 # Example usage (add this after training the model):
