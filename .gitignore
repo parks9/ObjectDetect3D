@@ -1,3 +1,10 @@
-/saved_models
+# Ignore trained models
+*.pt
+*.pth
+
+# Images
+*.png
+
+# Virtual Environment
 .venv
 
