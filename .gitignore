@@ -7,3 +7,7 @@
 
 # Virtual Environment
 .venv
+
+# Cache and random stuff
+.idea/
+__pycache__/
